@@ -1,0 +1,23 @@
+lms_project/
+│
+├── users/
+│   ├── models.py
+│   ├── views.py
+│   ├── urls.py
+│
+├── courses/
+│   ├── models.py
+│   ├── views.py
+│   ├── urls.py
+│
+├── templates/
+│   ├── base.html
+│   ├── login.html
+│   ├── dashboard_student.html
+│   ├── dashboard_teacher.html
+│
+├── static/
+│   ├── css/
+│   ├── js/
+│
+└── media/
