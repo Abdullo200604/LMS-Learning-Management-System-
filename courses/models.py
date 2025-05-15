@@ -12,6 +12,8 @@ class Course(models.Model):
     def __str__(self):
         return self.title
 
+class CustomUser(models.Model):
+    role = models.CharField(max_length=100, null=True)  # Allow NULL values
 
 class Lesson(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='lessons')

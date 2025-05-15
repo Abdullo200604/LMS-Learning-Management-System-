@@ -9,6 +9,9 @@ from django.contrib.auth.decorators import login_required
 
 from django.core.exceptions import PermissionDenied
 
+from rest_framework import viewsets
+from .models import CustomUser
+from .serializers import CustomUserSerializer
 
 def student_register(request):
     if request.method == 'POST':
@@ -65,3 +68,8 @@ def teacher_required(view_func):
             raise PermissionDenied
         return view_func(request, *args, **kwargs)
     return wrapper
+
+
+class CustomUserViewSet(viewsets.ModelViewSet):
+    queryset = CustomUser.objects.all()
+    serializer_class = CustomUserSerializer

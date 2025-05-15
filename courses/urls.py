@@ -1,7 +1,13 @@
+from rest_framework.routers import DefaultRouter
+from .views import CourseViewSet, LessonViewSet, AssignmentViewSet, SubmissionViewSet
+from django.urls import path, include
 
-from django.urls import path
-from . import views
+router = DefaultRouter()
+router.register(r'courses', CourseViewSet)
+router.register(r'lessons', LessonViewSet)
+router.register(r'assignments', AssignmentViewSet)
+router.register(r'submissions', SubmissionViewSet)
 
 urlpatterns = [
-    path('', views.index, name='course_index'),  # Kurslar ro'yxati yoki bosh sahifa
+    path('', include(router.urls)),
 ]
