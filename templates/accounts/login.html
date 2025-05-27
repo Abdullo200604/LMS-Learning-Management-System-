@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS - Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+        }
+        .login-container {
+            display: flex;
+            width: 800px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .left {
+            background-color: #1a3c6c;
+            color: white;
+            padding: 40px;
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .right {
+            background-color: white;
+            padding: 40px;
+            width: 50%;
+        }
+        .right h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .right input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .right button {
+            width: 100%;
+            padding: 10px;
+            background-color: #1a3c6c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .right button:hover {
+            background-color: #14325b;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="left">
+            <img src="https://via.placeholder.com/300x200" alt="Student Studying" style="max-width: 100%;">
+        </div>
+        <div class="right">
+            <h2>LEARNING MANAGEMENT SYSTEM</h2>
+            <form id="login-form">
+                <input type="text" placeholder="Login kiriting" required>
+                <input type="password" placeholder="Parol kiriting" required>
+                <button type="submit">KIRISH</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            window.location.href = 'dashboard.html'; // Dashboard sahifasiga yo'naltirish
+        });
+    </script>
+</body>
+</html>

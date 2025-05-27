@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
-    'courses', 'rest_framework',
+    'courses',
+    'rest_framework',
+    'rest_framework',  # agar REST API ishlatilsa
+    'accounts',        # yangi yaratilgan app
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'
@@ -59,7 +62,7 @@ ROOT_URLCONF = 'lms_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

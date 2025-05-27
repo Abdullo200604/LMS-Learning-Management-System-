@@ -47,7 +47,7 @@ def user_login(request):
                 return redirect('student_dashboard')
     else:
         form = AuthenticationForm()
-    return render(request, 'users/login.html', {'form': form})
+    return render(request, 'users/', {'form': form})
 
 def user_logout(request):
     logout(request)
