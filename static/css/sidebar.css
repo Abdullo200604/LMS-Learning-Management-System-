@@ -1,0 +1,44 @@
+.sidebar {
+    width: 60px;
+    background: #163567;
+    height: 100vh;
+    transition: width 0.2s;
+    position: fixed;
+}
+
+.sidebar.open {
+    width: 200px;
+}
+
+.sidebar-menu li {
+    position: relative;
+}
+
+.sidebar .label {
+    opacity: 0;
+    transition: opacity 0.2s;
+    margin-left: 10px;
+    color: #fff;
+    white-space: nowrap;
+}
+
+.sidebar.open .label {
+    opacity: 1;
+}
+
+.sidebar .icon {
+    font-size: 20px;
+    color: #fff;
+    display: inline-block;
+}
+
+#sidebarToggle {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    left: 10px;
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <h2>Login</h2>
+    {% if messages %}
+      {% for message in messages %}
+        <p style="color: red;">{{ message }}</p>
+      {% endfor %}
+    {% endif %}
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Login"><br>
+        <input type="password" name="password" placeholder="Parol"><br>
+        <button type="submit">Kirish</button>
+    </form>
+    <p>Ro'yxatdan o'tmaganmisiz? <a href="/accounts/register/">Ro'yxatdan o'tish</a></p>
+</body>
+</html>

@@ -1,13 +1,10 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
 
-
-    # Boshqa maydonlar va sozlamalar
-
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, username, password=None, **extra_fields):
         if not email:
-            raise ValueError("The Email field must be set")
+            raise ValueError("Email maydoni bo‘sh bo‘lishi mumkin emas")
         email = self.normalize_email(email)
         user = self.model(email=email, username=username, **extra_fields)
         user.set_password(password)
@@ -19,11 +16,12 @@ class CustomUserManager(BaseUserManager):
         extra_fields.setdefault('is_superuser', True)
         return self.create_user(email, username, password, **extra_fields)
 
-
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=255)
-    role = models.CharField(max_length=50, default='student')  # example role field
+    first_name = models.CharField(max_length=150, blank=True, null=True)  # 👈 BU YER QO‘SHILDI
+    last_name = models.CharField(max_length=150, blank=True, null=True)   # 👈 BU YER QO‘SHILDI
+    role = models.CharField(max_length=50, default='student')
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 

@@ -12,6 +12,10 @@ from django.core.exceptions import PermissionDenied
 from rest_framework import viewsets
 from .models import CustomUser
 from .serializers import CustomUserSerializer
+from django.shortcuts import render
+
+def register_view(request):
+    return render(request, 'users/register.html')
 
 def student_register(request):
     if request.method == 'POST':

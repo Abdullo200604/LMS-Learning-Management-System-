@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Foydalanuvchi qo‘shish</title>
+</head>
+<body>
+    <h2>Yangi foydalanuvchi qo‘shish</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="email" placeholder="Email kiriting" required><br>
+        <input type="text" name="username" placeholder="Login kiriting" required><br>
+        <input type="password" name="password" placeholder="Parol kiriting" required><br>
+        <select name="role" required>
+            <option value="teacher">O‘qituvchi</option>
+            <option value="student">Talaba</option>
+        </select><br><br>
+        <button type="submit">Qo‘shish</button>
+    </form>
+</body>
+</html>
