@@ -4,33 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Zamdirektor Dashboard</title>
-    <style>
-        body { font-family: Arial; margin: 0; background: #f0f2f5; }
-        header { background: #1a3c6c; color: white; padding: 20px; text-align: center; }
-        nav { background: #14325b; padding: 10px; }
-        nav a { color: white; margin-right: 20px; text-decoration: none; font-weight: bold; }
-        nav a:hover { text-decoration: underline; }
-        .content { padding: 30px; }
-        .card { background: white; padding: 20px; margin-bottom: 20px; border-radius: 10px; box-shadow: 0 0 8px rgba(0,0,0,0.1); }
-        footer { text-align: center; padding: 20px; background: #eee; font-size: 14px; color: #666; }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <header>
         <h1>Zamdirektor Dashboard</h1>
-        <p>Xush kelibsiz, {{ request.user.username }}!</p>
+        <p>Salom, {{ request.user.username }}!</p>
     </header>
     <nav>
-        <a href="/accounts/register/">O‘qituvchi yoki talaba qo‘shish</a>
-        <a href="/admin/">Admin Panel</a>
+        <a href="/accounts/register/">Foydalanuvchi qo‘shish</a>
         <a href="/accounts/logout/">Chiqish</a>
     </nav>
-    <div class="content">
-        <div class="card">
-            <h2>Hisobotlar</h2>
-            <p>Fanlar, foydalanuvchilar, testlar va darslar haqida ma’lumotlar ko‘rinadi.</p>
-        </div>
-    </div>
-    <footer>&copy; {{ now.year }} LMS. Barcha huquqlar himoyalangan.</footer>
+    <main>
+        <p>Bu sahifada zamdirektor uchun boshqaruv va monitoring bo‘limlari ko‘rsatiladi.</p>
+    </main>
 </body>
 </html>

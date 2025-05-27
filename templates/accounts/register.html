@@ -1,21 +1,68 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
-    <title>Foydalanuvchi qo‘shish</title>
+    <title>Ro'yxatdan o'tish</title>
+    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+    <style>
+        /* Register sahifa uchun style */
+        .register-container {
+            margin: 80px auto;
+            max-width: 400px;
+            background: #fff;
+            padding: 32px 28px;
+            border-radius: 8px;
+            box-shadow: 0 2px 16px rgba(90,180,255,0.07);
+        }
+        h2 {
+            color: #1a8cff;
+            text-align: center;
+        }
+        .register-container input, .register-container button {
+            width: 100%;
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ddeeff;
+            font-size: 15px;
+        }
+        .register-container button {
+            background: #1a8cff;
+            color: #fff;
+            border: none;
+            font-weight: 600;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        .register-container p {
+            margin-top: 18px;
+            text-align: center;
+            font-size: 14px;
+        }
+        .register-container a {
+            color: #1a8cff;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-    <h2>Yangi foydalanuvchi qo‘shish</h2>
-    <form method="POST">
-        {% csrf_token %}
-        <input type="text" name="email" placeholder="Email kiriting" required><br>
-        <input type="text" name="username" placeholder="Login kiriting" required><br>
-        <input type="password" name="password" placeholder="Parol kiriting" required><br>
-        <select name="role" required>
-            <option value="teacher">O‘qituvchi</option>
-            <option value="student">Talaba</option>
-        </select><br><br>
-        <button type="submit">Qo‘shish</button>
-    </form>
+    {% include "accounts/sidebar.html" %}
+    <div class="register-container">
+        <h2>Ro‘yxatdan o‘tish</h2>
+        {% if messages %}
+            {% for message in messages %}
+                <p style="color: red;">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Login" required>
+            <input type="password" name="password" placeholder="Parol" required>
+            <button type="submit">Ro‘yxatdan o‘tish</button>
+        </form>
+        <p>Ro‘yxatdan o‘tganmisiz? <a href="/accounts/login/">Kirish</a></p>
+    </div>
+    <script src="{% static 'js/sidebar.js' %}"></script>
 </body>
 </html>

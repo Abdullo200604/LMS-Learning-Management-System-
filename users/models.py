@@ -1,3 +1,4 @@
+# Faqat users app-da CustomUser bo‘lishi kerak!
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
 
@@ -19,8 +20,8 @@ class CustomUserManager(BaseUserManager):
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=255)
-    first_name = models.CharField(max_length=150, blank=True, null=True)  # 👈 BU YER QO‘SHILDI
-    last_name = models.CharField(max_length=150, blank=True, null=True)   # 👈 BU YER QO‘SHILDI
+    first_name = models.CharField(max_length=150, blank=True, null=True)
+    last_name = models.CharField(max_length=150, blank=True, null=True)
     role = models.CharField(max_length=50, default='student')
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)

@@ -3,140 +3,19 @@
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
-    <title>PDP School Student Dashboard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: #f4fafd;
-        }
-        .sidebar {
-            width: 260px;
-            background: #e3f0fa;
-            height: 100vh;
-            position: fixed;
-            left: 0;
-            top: 0;
-            box-shadow: 2px 0 10px rgba(30, 90, 170, 0.07);
-            display: flex;
-            flex-direction: column;
-        }
-        .sidebar-header {
-            text-align: center;
-            padding: 28px 0 16px 0;
-            background: #ffffff;
-            border-bottom: 1px solid #d6eaff;
-        }
-        .sidebar-header img {
-            width: 58px;
-            height: 58px;
-            border-radius: 8px;
-            margin-bottom: 7px;
-        }
-        .sidebar-header h2 {
-            font-size: 20px;
-            color: #1a8cff;
-            margin: 0;
-            font-weight: 700;
-        }
-        .sidebar-header p {
-            color: #90b9dd;
-            font-size: 13px;
-            margin: 3px 0 0 0;
-            letter-spacing: 0.2px;
-        }
-        .menu-title {
-            color: #6da6e6;
-            font-weight: 600;
-            margin: 22px 0 7px 35px;
-            letter-spacing: 1px;
-            font-size: 12px;
-        }
-        .sidebar-menu {
-            flex: 1;
-            padding: 0;
-            list-style: none;
-        }
-        .sidebar-menu li {
-            margin: 0;
-        }
-        .sidebar-menu a {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: #155999;
-            padding: 14px 35px;
-            font-size: 15px;
-            border-left: 3px solid transparent;
-            transition: all 0.2s;
-        }
-        .sidebar-menu a:hover, .sidebar-menu a.active {
-            background: #d6eaff;
-            color: #006fff;
-            border-left: 3px solid #1a8cff;
-            font-weight: 600;
-        }
-        .sidebar-menu .icon {
-            margin-right: 14px;
-            font-size: 18px;
-            width: 22px;
-            text-align: center;
-        }
-        /* Main content area */
-        .main {
-            margin-left: 260px;
-            padding: 38px 40px;
-        }
-        .main h1 {
-            color: #1a8cff;
-            font-size: 32px;
-            margin-bottom: 16px;
-        }
-        .main .card {
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 16px rgba(0,90,180,0.07);
-            padding: 32px;
-            margin-bottom: 30px;
-        }
-        @media (max-width: 750px) {
-            .sidebar { position: relative; width: 100%; height: auto;}
-            .main { margin-left: 0; padding: 14px; }
-        }
-    </style>
-    <!-- Ikonlar uchun CDN, istasangiz Font Awesome CDN ham ulashing -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <div class="sidebar">
-        <div class="sidebar-header">
-            <img src="{% static 'pdp_logo.png' %}" alt="PDP Logo">
-            <h2>PDP School</h2>
-            <p>Talaba paneli</p>
-        </div>
-        <div class="menu-title">TALABA</div>
-        <ul class="sidebar-menu">
-            <li><a href="#" class="active"><span class="icon"><i class="fas fa-home"></i></span>Dashboard</a></li>
-            <li><a href="#"><span class="icon"><i class="fas fa-book-open"></i></span>Fan tanlov</a></li>
-            <li><a href="#"><span class="icon"><i class="fas fa-book"></i></span>Mening fanlarim</a></li>
-            <li><a href="#"><span class="icon"><i class="fas fa-calendar-alt"></i></span>Dars jadvali</a></li>
-            <li><a href="#"><span class="icon"><i class="fas fa-tasks"></i></span>Vazifalar</a></li>
-            <li><a href="#"><span class="icon"><i class="fas fa-retweet"></i></span>Qayta o‘qish</a></li>
-            <li><a href="#"><span class="icon"><i class="fas fa-graduation-cap"></i></span>Yakuniy</a></li>
-            <li><a href="#"><span class="icon"><i class="fas fa-user-check"></i></span>Individual shaxsiy reja</a></li>
-            <li><a href="#"><span class="icon"><i class="fas fa-info-circle"></i></span>Ma'lumot</a></li>
-            <li><a href="#"><span class="icon"><i class="fas fa-poll"></i></span>So‘rovnoma</a></li>
-            <li><a href="#"><span class="icon"><i class="fas fa-user-friends"></i></span>Talaba xizmatlari</a></li>
-            <li><a href="#"><span class="icon"><i class="fas fa-question-circle"></i></span>Testlar</a></li>
-            <li><a href="#"><span class="icon"><i class="fas fa-certificate"></i></span>Diplom ishi</a></li>
-        </ul>
-    </div>
-    <div class="main">
-        <h1>Dashboard</h1>
-        <div class="card">
-            <p>Bu yerda talabaga tegishli umumiy ma'lumotlar, ogohlantirishlar, so‘nggi yangiliklar va vazifalar chiqadi.</p>
-        </div>
-    </div>
+    <header>
+        <h1>Student Dashboard</h1>
+        <p>Salom, {{ request.user.username }}!</p>
+    </header>
+    <nav>
+        <a href="/accounts/logout/">Chiqish</a>
+    </nav>
+    <main>
+        <p>Bu sahifada talabaga tegishli ma'lumotlar chiqadi.</p>
+    </main>
 </body>
 </html>

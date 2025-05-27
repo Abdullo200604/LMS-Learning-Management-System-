@@ -3,111 +3,66 @@
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
-    <title>PDP School - Login</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kirish</title>
+    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: #f4fafd;
-        }
-        .login-wrapper {
-            display: flex;
-            height: 100vh;
-        }
-        .login-left {
-            width: 50%;
-            background: linear-gradient(120deg, #e3f0fa 60%, #1a8cff 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .login-left img {
-            width: 80%;
+        /* Login sahifa uchun qisqa style */
+        .login-container {
+            margin: 80px auto;
             max-width: 400px;
-            border-radius: 14px;
-            box-shadow: 0 8px 28px 0 rgba(20,110,240,0.08);
-        }
-        .login-right {
-            width: 50%;
             background: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 32px 28px;
+            border-radius: 8px;
+            box-shadow: 0 2px 16px rgba(90,180,255,0.07);
         }
-        .login-form-container {
-            width: 340px;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 6px 32px rgba(30,120,255,0.07);
-            padding: 42px 38px 32px 38px;
-        }
-        .login-form-container h2 {
-            margin: 0 0 20px 0;
+        h2 {
             color: #1a8cff;
-            font-size: 27px;
-            font-weight: 700;
-            letter-spacing: 1px;
             text-align: center;
         }
-        .login-form-container form {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-        .login-form-container input {
-            padding: 12px 13px;
+        .login-container input, .login-container button {
+            width: 100%;
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ddeeff;
             font-size: 15px;
-            border: 1px solid #d6eaff;
-            border-radius: 6px;
-            outline: none;
-            background: #f4fafd;
-            transition: border .2s;
         }
-        .login-form-container input:focus {
-            border: 1.5px solid #1a8cff;
-            background: #fff;
-        }
-        .login-form-container button {
-            padding: 11px 0;
-            border: none;
-            border-radius: 6px;
+        .login-container button {
             background: #1a8cff;
             color: #fff;
-            font-weight: bold;
-            font-size: 16px;
+            border: none;
+            font-weight: 600;
+            margin-top: 20px;
             cursor: pointer;
-            margin-top: 12px;
-            transition: background .2s;
         }
-        .login-form-container button:hover {
-            background: #006fff;
+        .login-container p {
+            margin-top: 18px;
+            text-align: center;
+            font-size: 14px;
         }
-        @media (max-width: 900px) {
-            .login-left { display: none; }
-            .login-right { width: 100%; }
+        .login-container a {
+            color: #1a8cff;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
-    <div class="login-wrapper">
-        <div class="login-left">
-            <!-- Example rasm (erkin o'zgartirsa bo'ladi, yoki static faylga rasm qo'yasiz) -->
-            <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=600&q=80" alt="Learning Example">
-        </div>
-        <div class="login-right">
-            <div class="login-form-container">
-                <h2>PDP School<br>Login</h2>
-                <form method="POST" autocomplete="off">
-                    {% csrf_token %}
-                    <input type="text" name="username" placeholder="Login yoki email kiriting" required>
-                    <input type="password" name="password" placeholder="Parol kiriting" required>
-                    <button type="submit">KIRISH</button>
-                </form>
-            </div>
-        </div>
+    {% include "accounts/sidebar.html" %}
+    <div class="login-container">
+        <h2>Login</h2>
+        {% if messages %}
+            {% for message in messages %}
+                <p style="color: red;">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Login" required>
+            <input type="password" name="password" placeholder="Parol" required>
+            <button type="submit">Kirish</button>
+        </form>
+        <p>Ro‘yxatdan o‘tmaganmisiz? <a href="/accounts/register/">Ro‘yxatdan o‘tish</a></p>
     </div>
+    <script src="{% static 'js/sidebar.js' %}"></script>
 </body>
 </html>

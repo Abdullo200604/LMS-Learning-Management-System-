@@ -4,79 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Dashboard</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #f0f2f5;
-        }
-        header {
-            background-color: #1a3c6c;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        nav {
-            background-color: #14325b;
-            padding: 10px;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-right: 20px;
-            font-weight: bold;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        .content {
-            padding: 30px;
-        }
-        .card {
-            background-color: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 8px rgba(0,0,0,0.1);
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #eee;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-            font-size: 14px;
-            color: #666;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <header>
         <h1>Admin Dashboard</h1>
-        <p>Xush kelibsiz, {{ request.user.username }}!</p>
+        <p>Salom, {{ request.user.username }}!</p>
     </header>
-
     <nav>
         <a href="/accounts/register/">Foydalanuvchi qo‘shish</a>
         <a href="/admin/">Admin Panel</a>
         <a href="/accounts/logout/">Chiqish</a>
     </nav>
-
-    <div class="content">
-        <div class="card">
-            <h2>Statistikalar</h2>
-            <p>Yangi foydalanuvchilar, tizimdagi kurslar, o‘qituvchilar soni va boshqalar bu yerda chiqishi mumkin.</p>
-        </div>
-
-        <div class="card">
-            <h2>So‘nggi amallar</h2>
-            <p>Admin tomonidan bajarilgan so‘nggi harakatlar yoki tizim yangiliklari ro‘yxati.</p>
-        </div>
-    </div>
-
-    <footer>
-        &copy; {{ now.year }} LMS tizimi. Barcha huquqlar himoyalangan.
-    </footer>
+    <main>
+        <p>Bu sahifada admin uchun statistikalar va so‘nggi amallar chiqadi.</p>
+    </main>
 </body>
 </html>
