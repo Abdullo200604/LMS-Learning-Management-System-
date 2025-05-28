@@ -1,32 +1,27 @@
-from django import forms
-from django.contrib.auth import authenticate
+from django.contrib.auth.forms import UserCreationForm
+from accounts.models import CustomUser
 
-class CustomLoginForm(forms.Form):
-    login = forms.CharField(label="Login yoki email", max_length=255)
-    password = forms.CharField(label="Parol", widget=forms.PasswordInput)
+class StudentSignUpForm(UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        model = CustomUser
+        fields = ('username', 'email')
 
-    def clean(self):
-        login = self.cleaned_data.get('login')
-        password = self.cleaned_data.get('password')
-        from django.contrib.auth import get_user_model
-        User = get_user_model()
-        user = None
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.is_student = True
+        if commit:
+            user.save()
+        return user
 
-        # login orqali qidiramiz (email yoki username)
-        try:
-            user_obj = User.objects.get(email=login)
-        except User.DoesNotExist:
-            try:
-                user_obj = User.objects.get(username=login)
-            except User.DoesNotExist:
-                user_obj = None
 
-        if user_obj is not None:
-            user = authenticate(username=user_obj.email, password=password)  # username maydoni = email!
-        else:
-            user = None
+class TeacherSignUpForm(UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        model = CustomUser
+        fields = ('username', 'email')
 
-        if not user:
-            raise forms.ValidationError("Login yoki parol noto‘g‘ri!")
-        self.user = user
-        return self.cleaned_data
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.is_teacher = True
+        if commit:
+            user.save()
+        return user

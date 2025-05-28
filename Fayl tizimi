@@ -5,11 +5,6 @@ lms_project/
 │   ├── views.py
 │   ├── urls.py
 │
-├── courses/
-│   ├── models.py
-│   ├── views.py
-│   ├── urls.py
-│
 ├── templates/
 │   ├── base.html
 │   ├── login.html

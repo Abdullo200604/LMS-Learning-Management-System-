@@ -1,5 +1,5 @@
 from django.db import models
-from users.models import CustomUser
+from accounts.models import CustomUser
 
 class Assignment(models.Model):
     title = models.CharField(max_length=255)
