@@ -3,19 +3,39 @@
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
-    <title>Student Dashboard</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Talaba Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+    <style>
+        .main-content {
+            margin-left: 260px;
+            padding: 38px 40px;
+        }
+        @media (max-width: 750px) {
+            .main-content { margin-left: 0; padding: 14px; }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Student Dashboard</h1>
-        <p>Salom, {{ request.user.username }}!</p>
-    </header>
-    <nav>
-        <a href="/accounts/logout/">Chiqish</a>
+    <nav style="background: #1a3c6c; padding: 10px 0; color: white; text-align: center;">
+        <a href="#" style="color:white; margin:0 15px; text-decoration:none; font-weight:600;">Bosh sahifa</a>
+        <a href="{% url 'password_change' %}" style="color:white; margin:0 15px; text-decoration:none; font-weight:600;">Parolni o‘zgartirish</a>
+        <a href="/accounts/logout/" style="color:white; margin:0 15px; text-decoration:none; font-weight:600;">Chiqish</a>
     </nav>
-    <main>
-        <p>Bu sahifada talabaga tegishli ma'lumotlar chiqadi.</p>
-    </main>
+    {% include "accounts/sidebar.html" %}
+    <div class="main-content">
+        <h1>Talaba paneli</h1>
+        <p>Salom, <b>{{ request.user.username }}</b>!</p>
+        <div style="background:#fff; border-radius:10px; box-shadow:0 4px 16px rgba(0,90,180,0.07); padding:30px; margin-top:25px;">
+            <h2>Foydali bo‘limlar</h2>
+            <ul style="font-size:16px;">
+                <li><a href="#" style="color:#1a8cff;">Fan tanlash</a></li>
+                <li><a href="#" style="color:#1a8cff;">Vazifalarim</a></li>
+                <li><a href="#" style="color:#1a8cff;">Natijalar</a></li>
+                <li><a href="#" style="color:#1a8cff;">Ma’lumotlarim</a></li>
+            </ul>
+            <p style="margin-top:15px; color:#888;">Tez orada yana imkoniyatlar qo‘shiladi.</p>
+        </div>
+    </div>
+    <script src="{% static 'js/sidebar.js' %}"></script>
 </body>
 </html>

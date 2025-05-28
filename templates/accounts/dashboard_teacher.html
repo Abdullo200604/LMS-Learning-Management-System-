@@ -12,7 +12,10 @@
         <p>Salom, {{ request.user.username }}!</p>
     </header>
     <nav>
-        <a href="/accounts/logout/">Chiqish</a>
+    <a href="#">Yangi dars qo‘shish</a>
+    <a href="#">Talabalar ro‘yxati</a>
+    <a href="{% url 'password_change' %}">Parolni o‘zgartirish</a>
+    <a href="/accounts/logout/">Chiqish</a>
     </nav>
     <main>
         <p>Bu sahifada o‘qituvchiga tegishli kurslar va darslar ko‘rsatiladi.</p>

@@ -1,4 +1,5 @@
 <!-- templates/accounts/sidebar.html -->
+{% load static %}
 <div id="sidebar" class="sidebar">
     <div class="sidebar-header">
         <img src="{% static 'pdp_logo.png' %}" alt="PDP Logo" style="width:40px; height:40px;">
@@ -6,6 +7,7 @@
     </div>
     <ul class="sidebar-menu">
         <li><a href="/dashboard/"><i class="fas fa-home"></i> Dashboard</a></li>
+        <li><a href="{% url 'password_change' %}"><i class="fas fa-key"></i> Parolni o‘zgartirish</a></li>
         <li><a href="/accounts/register/"><i class="fas fa-user-plus"></i> Foydalanuvchi qo‘shish</a></li>
         <li><a href="/accounts/logout/"><i class="fas fa-sign-out-alt"></i> Chiqish</a></li>
     </ul>

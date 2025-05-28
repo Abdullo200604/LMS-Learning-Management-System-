@@ -12,9 +12,12 @@
         <p>Salom, {{ request.user.username }}!</p>
     </header>
     <nav>
-        <a href="/accounts/register/">Foydalanuvchi qo‘shish</a>
-        <a href="/accounts/logout/">Chiqish</a>
+    <a href="/accounts/register/">Foydalanuvchi qo‘shish</a>
+    <a href="#">Statistikalar</a>
+    <a href="{% url 'password_change' %}">Parolni o‘zgartirish</a>
+    <a href="/accounts/logout/">Chiqish</a>
     </nav>
+
     <main>
         <p>Bu sahifada zamdirektor uchun boshqaruv va monitoring bo‘limlari ko‘rsatiladi.</p>
     </main>

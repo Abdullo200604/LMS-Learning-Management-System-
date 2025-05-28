@@ -6,63 +6,48 @@
     <title>Kirish</title>
     <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
     <style>
-        /* Login sahifa uchun qisqa style */
-        .login-container {
-            margin: 80px auto;
-            max-width: 400px;
-            background: #fff;
-            padding: 32px 28px;
-            border-radius: 8px;
-            box-shadow: 0 2px 16px rgba(90,180,255,0.07);
-        }
-        h2 {
-            color: #1a8cff;
-            text-align: center;
-        }
-        .login-container input, .login-container button {
-            width: 100%;
-            margin-top: 15px;
-            padding: 10px;
-            border-radius: 6px;
-            border: 1px solid #ddeeff;
-            font-size: 15px;
-        }
-        .login-container button {
-            background: #1a8cff;
-            color: #fff;
-            border: none;
-            font-weight: 600;
-            margin-top: 20px;
-            cursor: pointer;
-        }
-        .login-container p {
-            margin-top: 18px;
-            text-align: center;
-            font-size: 14px;
-        }
-        .login-container a {
-            color: #1a8cff;
-            text-decoration: none;
-        }
+        .login-container { margin: 80px auto; max-width: 340px; background: #fff; padding: 32px 28px; border-radius: 8px; box-shadow: 0 2px 16px rgba(90,180,255,0.07);}
+        h2 { color: #1a8cff; text-align: center;}
+        .login-container input, .login-container button { width: 100%; margin-top: 15px; padding: 10px; border-radius: 6px; border: 1px solid #ddeeff; font-size: 15px;}
+        .login-container button { background: #1a8cff; color: #fff; border: none; font-weight: 600; margin-top: 20px; cursor: pointer;}
+        .login-container p { margin-top: 18px; text-align: center; font-size: 14px;}
+        .login-container a { color: #1a8cff; text-decoration: none;}
+        .errorlist, .messages { color: red; list-style: none; text-align: center; padding-left: 0; margin-bottom: 0;}
     </style>
 </head>
 <body>
-    {% include "accounts/sidebar.html" %}
     <div class="login-container">
-        <h2>Login</h2>
+        <h2>Kirish</h2>
+
         {% if messages %}
-            {% for message in messages %}
-                <p style="color: red;">{{ message }}</p>
-            {% endfor %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
         {% endif %}
+
         <form method="POST">
             {% csrf_token %}
-            <input type="text" name="username" placeholder="Login" required>
+            <input type="text" name="username" placeholder="Email (login)" required>
             <input type="password" name="password" placeholder="Parol" required>
             <button type="submit">Kirish</button>
         </form>
-        <p>Ro‘yxatdan o‘tmaganmisiz? <a href="/accounts/register/">Ro‘yxatdan o‘tish</a></p>
+
+        {% if form.errors %}
+            <ul class="errorlist">
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <p>Parol yoki login esdan chiqdimi? <br> <b>Admin</b> yoki <b>zavuch</b>ga murojaat qiling.</p>
     </div>
-    <script src="{% static 'js/sidebar.js' %}"></script>
 </body>
 </html>

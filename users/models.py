@@ -1,4 +1,3 @@
-# Faqat users app-da CustomUser bo‘lishi kerak!
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
 
@@ -28,7 +27,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     objects = CustomUserManager()
 
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'email'  # Login uchun email ishlatiladi
     REQUIRED_FIELDS = ['username']
 
     def __str__(self):
