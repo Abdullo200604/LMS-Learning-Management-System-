@@ -14,6 +14,7 @@ class StudentSignUpForm(UserCreationForm):
         return user
 
 
+
 class TeacherSignUpForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = CustomUser
